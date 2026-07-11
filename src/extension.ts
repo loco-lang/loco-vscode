@@ -5,15 +5,15 @@ import { RailCompletionProvider } from './completionProvider';
 import { RailDiagnosticProvider } from './diagnosticProvider';
 
 export function activate(context: vscode.ExtensionContext) {
-    console.log('Rail Language Support is now active');
+    console.log('Loco Language Support is now active');
 
-    const wasmPath = path.join(context.extensionPath, 'wasm', 'tree-sitter-rail.wasm');
+    const wasmPath = path.join(context.extensionPath, 'wasm', 'tree-sitter-loco.wasm');
 
     // Register Document Symbol Provider (outline / breadcrumbs)
     const symbolProvider = new RailDocumentSymbolProvider(wasmPath);
     context.subscriptions.push(
         vscode.languages.registerDocumentSymbolProvider(
-            { language: 'rail' },
+            { language: 'loco' },
             symbolProvider
         )
     );
@@ -21,7 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
     // Register Completion Provider (keyword and identifier suggestions)
     context.subscriptions.push(
         vscode.languages.registerCompletionItemProvider(
-            { language: 'rail' },
+            { language: 'loco' },
             new RailCompletionProvider(),
             ...['.']
         )
