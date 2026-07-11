@@ -1,0 +1,140 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Loco",
+  "scopeName": "source.loco",
+  "fileTypes": ["rail"],
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#chars" },
+    { "include": "#attributes" },
+    { "include": "#keywords" },
+    { "include": "#bool-literals" },
+    { "include": "#builtin-types" },
+    { "include": "#device-types" },
+    { "include": "#type-identifiers" },
+    { "include": "#integer-literals" },
+    { "include": "#function-calls" },
+    { "include": "#operators" },
+    { "include": "#brackets" },
+    { "include": "#punctuation" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [{
+        "name": "comment.line.double-slash.loco",
+        "match": "//.*$"
+      }]
+    },
+
+    "strings": {
+      "name": "string.quoted.double.rail",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [{
+        "name": "constant.character.escape.loco",
+        "match": "\\\\."
+      }]
+    },
+
+    "chars": {
+      "name": "string.quoted.single.rail",
+      "begin": "'",
+      "end": "'",
+      "patterns": [{
+        "name": "constant.character.escape.loco",
+        "match": "\\\\."
+      }]
+    },
+
+    "keywords": {
+      "patterns": [{
+        "name": "keyword.control.loco",
+        "match": "\\b(actor|automation|composite|const|do|else|for|fork|if|impl|import|intrinsic|launch|layout|let|new|on|or|pin|proc|pub|route|send|start|startup|state)\\b"
+      }]
+    },
+
+    "bool-literals": {
+      "patterns": [{
+        "name": "constant.language.loco",
+        "match": "\\b(true|false)\\b"
+      }]
+    },
+
+    "builtin-types": {
+      "patterns": [{
+        "name": "storage.type.primitive.loco",
+        "match": "\\b(Int|Bool|String|Float|Char)\\b"
+      }]
+    },
+
+    "device-types": {
+      "patterns": [{
+        "name": "support.class.device.loco",
+        "match": "\\b(pin_turnout|dcc_turnout|servo_turnout|virtual_turnout|signal|dcc_signal|servo_signal|sensor|loco|roster)\\b"
+      }]
+    },
+
+    "type-identifiers": {
+      "patterns": [{
+        "name": "support.type.loco",
+        "match": "\\b[A-Z][a-zA-Z0-9_]*\\b"
+      }]
+    },
+
+    "integer-literals": {
+      "patterns": [{
+        "name": "constant.numeric.loco",
+        "match": "\\b[0-9]+\\b"
+      }]
+    },
+
+    "function-calls": {
+      "patterns": [{
+        "captures": {
+          "1": { "name": "entity.name.function.loco" }
+        },
+        "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=\\()"
+      }]
+    },
+
+    "operators": {
+      "patterns": [
+        { "match": "=>",       "name": "keyword.operator.arrow.loco" },
+        { "match": "->",       "name": "keyword.operator.arrow.loco" },
+        { "match": "::",       "name": "keyword.operator.path.loco" },
+        { "match": "==|!=|<=|>=|<|>", "name": "keyword.operator.comparison.loco" },
+        { "match": "\\+|-",    "name": "keyword.operator.arithmetic.loco" },
+        { "match": "=",        "name": "keyword.operator.assignment.loco" },
+        { "match": "\\.",      "name": "keyword.operator.access.loco" }
+      ]
+    },
+
+    "attributes": {
+      "patterns": [{
+        "name": "meta.annotation.loco",
+        "match": "#\\[intrinsic\\([a-zA-Z_][a-zA-Z0-9_]*\\)\\]"
+      }]
+    },
+
+    "brackets": {
+      "patterns": [
+        { "match": "\\{", "name": "punctuation.curlybrace.open.loco" },
+        { "match": "\\}", "name": "punctuation.curlybrace.close.loco" },
+        { "match": "\\(", "name": "punctuation.parenthesis.open.loco" },
+        { "match": "\\)", "name": "punctuation.parenthesis.close.loco" },
+        { "match": "\\[", "name": "punctuation.squarebracket.open.loco" },
+        { "match": "\\]", "name": "punctuation.squarebracket.close.loco" }
+      ]
+    },
+
+    "punctuation": {
+      "patterns": [
+        { "match": ";", "name": "punctuation.terminator.loco" },
+        { "match": ":", "name": "punctuation.separator.loco" },
+        { "match": ",", "name": "punctuation.separator.loco" },
+        { "match": "\\*", "name": "punctuation.import.glob.loco" }
+      ]
+    }
+  }
+}

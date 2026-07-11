@@ -1,0 +1,72 @@
+{
+  "proc": {
+    "prefix": "proc",
+    "body": "proc ${1:name}(${2:params})${3: -> ${4:RetType}} {\n\t${5}\n}",
+    "description": "Procedure definition"
+  },
+  "composite": {
+    "prefix": "composite",
+    "body": "composite ${1:Name} {\n\t${2}\n}",
+    "description": "Composite type definition"
+  },
+  "actor": {
+    "prefix": "actor",
+    "body": "actor {\n\tstart state ${1:Idle} => ${2:Target}\n\tstate ${2:Target}\n}",
+    "description": "Actor state machine"
+  },
+  "transition": {
+    "prefix": "on",
+    "body": "on ${1:expr} => ${2:Target} do {\n\t${3}\n}",
+    "description": "Actor transition with condition"
+  },
+  "transition-uncond": {
+    "prefix": "goto",
+    "body": "=> ${1:Target}",
+    "description": "Unconditional transition"
+  },
+  "let-const": {
+    "prefix": "letc",
+    "body": "let ${1:name} = const ${2:value}",
+    "description": "Top-level binding with const"
+  },
+  "let-new": {
+    "prefix": "letn",
+    "body": "let ${1:name} = new ${2:Type}(${3:args})",
+    "description": "Top-level binding with new"
+  },
+  "route": {
+    "prefix": "route",
+    "body": "route ${1:name} = \"${2:description}\" {\n\t${3}\n}",
+    "description": "Route definition"
+  },
+  "automation": {
+    "prefix": "automation",
+    "body": "automation ${1:name} = \"${2:description}\" {\n\t${3}\n}",
+    "description": "Automation definition"
+  },
+  "startup": {
+    "prefix": "startup",
+    "body": "startup {\n\t${1}\n}",
+    "description": "Startup block"
+  },
+  "import": {
+    "prefix": "import",
+    "body": "import ${1:module}",
+    "description": "Module import"
+  },
+  "launch": {
+    "prefix": "launch",
+    "body": "launch ${1:proc}(${2:args});",
+    "description": "Launch a concurrent proc"
+  },
+  "fork": {
+    "prefix": "fork",
+    "body": "fork ${1:proc}(${2:args});",
+    "description": "Fork a proc sharing current loco"
+  },
+  "send": {
+    "prefix": "send",
+    "body": "send ${1:loco} ${2:proc}(${3:args});",
+    "description": "Send as concurrent task with specific loco"
+  }
+}
