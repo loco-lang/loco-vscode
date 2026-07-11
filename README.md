@@ -1,3 +1,7 @@
+[![CI](https://github.com/loco-lang/loco-vscode/actions/workflows/ci.yml/badge.svg)](https://github.com/loco-lang/loco-vscode/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![VS Code Marketplace](https://img.shields.io/badge/VS%20Code-Marketplace-blue)](https://github.com/loco-lang/loco-vscode)
+
 # Loco for VS Code
 
 Loco language support for Visual Studio Code.
