@@ -2,23 +2,23 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 import * as assert from 'assert';
 
-suite('Rail Extension Test Suite', () => {
-    vscode.window.showInformationMessage('Start Rail extension tests.');
+suite('Loco Extension Test Suite', () => {
+    vscode.window.showInformationMessage('Start Loco extension tests.');
 
     test('Extension should be present', () => {
-        const ext = vscode.extensions.getExtension('rail-lang.rail-language-support');
-        assert.ok(ext, 'Extension rail-lang.rail-language-support should be present');
+        const ext = vscode.extensions.getExtension('loco-lang.loco-vscode');
+        assert.ok(ext, 'Extension loco-lang.loco-vscode should be present');
     });
 
-    test('Should activate on rail file', async () => {
-        const ext = vscode.extensions.getExtension('rail-lang.rail-language-support');
+    test('Should activate on loco file', async () => {
+        const ext = vscode.extensions.getExtension('loco-lang.loco-vscode');
         await ext?.activate();
         assert.ok(ext?.isActive, 'Extension should be active');
     });
 
     test('Document symbols should include proc definitions', async () => {
         const doc = await vscode.workspace.openTextDocument({
-            language: 'rail',
+            language: 'loco',
             content: 'proc main() { }\nproc foo(x: Int) -> Bool { true }'
         });
         const symbols = await vscode.commands.executeCommand<vscode.SymbolInformation[]>(
@@ -32,7 +32,7 @@ suite('Rail Extension Test Suite', () => {
 
     test('Keyword completions should include proc', async () => {
         const doc = await vscode.workspace.openTextDocument({
-            language: 'rail',
+            language: 'loco',
             content: ''
         });
         const completions = await vscode.commands.executeCommand<vscode.CompletionList>(
@@ -46,7 +46,7 @@ suite('Rail Extension Test Suite', () => {
 
     test('Syntax error diagnostics should be reported', async () => {
         const doc = await vscode.workspace.openTextDocument({
-            language: 'rail',
+            language: 'loco',
             content: 'proc main() { missing_semicolon }'
         });
         // Allow async diagnostic provider to run
